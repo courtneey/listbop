@@ -2,37 +2,49 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #FAFAFA;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo-login {
+  width: 300px;
+  margin-left: -100px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.signup-container {
+  display: flex;
+  height: 100vh;
+}
+
+.about-container {
+  background-color: #366F87;
+  width: 50%;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-left: 100px;
 }
 
-.App-link {
-  color: #61dafb;
+.about-title {
+  font-size: 60px;
+  font-family: "Raleway";
+  font-weight: bold;
+  align-self: flex-start;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.about-text {
+  font-size: 30px;
+  width: 500px;
+  font-family: "Raleway";
+  font-weight: bold;
+  align-self: flex-start;
+  text-align: left;
 }
+
+.signup-form {
+  width: 50%;
+}
+

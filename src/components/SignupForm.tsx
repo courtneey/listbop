@@ -1,11 +1,14 @@
 import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import LoginToggle from "./LoginToggle";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import {
+  Card,
+  CardContent,
+  Typography,
+  TextField,
+  Box,
+  Grid,
+  Button,
+} from "@mui/material";
 
 export default function SignupForm() {
   return (
@@ -17,14 +20,29 @@ export default function SignupForm() {
           boxShadow:
             "0px 5px 15px rgba(0, 0, 0, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.1)",
           borderRadius: 2,
+          padding: 2,
+          paddingTop: 3,
+          paddingBottom: 5,
         }}
       >
         <CardContent>
           <LoginToggle />
+          <Typography
+            sx={{
+              marginTop: 3,
+              marginLeft: 3,
+              textAlign: "left",
+              fontFamily: "Roboto",
+              fontSize: 50,
+              fontWeight: "bold",
+              color: "#3C3C3C",
+            }}
+          >
+            Sign up to get started.
+          </Typography>
           <Box
             sx={{
               flexGrow: 1,
-              marginTop: 2,
             }}
           >
             <Grid container spacing={3} p={3}>
@@ -55,6 +73,14 @@ export default function SignupForm() {
                 />
               </Grid>
             </Grid>
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              sx={{ width: "90%", marginTop: 4, height: 50, borderRadius: 3 }}
+            >
+              Create Account
+            </Button>
           </Box>
         </CardContent>
       </Card>

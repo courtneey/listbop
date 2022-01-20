@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
-export default function LoginForm() {
+export default function SignupForm() {
   return (
     <div className="signup-form">
       <Card

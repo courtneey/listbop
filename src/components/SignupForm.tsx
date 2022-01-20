@@ -2,6 +2,7 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import LoginToggle from "./LoginToggle";
 
 export default function SignupForm() {
   return (
@@ -16,6 +17,7 @@ export default function SignupForm() {
         }}
       >
         <CardContent>
+          <LoginToggle />
           <Typography>Form will go here</Typography>
         </CardContent>
       </Card>

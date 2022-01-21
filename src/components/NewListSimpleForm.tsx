@@ -3,7 +3,7 @@ import { Typography, TextField, Button } from "@mui/material";
 
 export default function NewListPage() {
   return (
-    <div style={{ width: "30%" }}>
+    <div style={{ width: "30%", marginTop: 80 }}>
       <Typography
         sx={{
           fontFamily: "Roboto",

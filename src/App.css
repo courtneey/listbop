@@ -54,5 +54,11 @@ body {
 .newlist-container {
   display: flex;
   margin: 150px;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.newlist-edit-container {
+  display: flex;
+  justify-content: space-around;
+  height: 70%;
 }

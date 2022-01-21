@@ -2,6 +2,7 @@ import React from "react";
 import NewListSimpleForm from "./NewListSimpleForm";
 import NewListEditForm from "./NewListEditForm";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 export default function NewListPage() {
   return (
@@ -11,6 +12,7 @@ export default function NewListPage() {
         <NewListSimpleForm />
         <NewListEditForm />
       </div>
+      <Footer />
     </div>
   );
 }

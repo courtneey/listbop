@@ -81,3 +81,12 @@ body {
   width: 30%;
   align-self: center;
 }
+
+.footer-container {
+  display: flex;
+  background-color: #366f87;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  gap: 130px;
+}

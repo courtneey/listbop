@@ -18,7 +18,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <div className="signup-container">
-          <SignupForm />
+          {/* <SignupForm /> */}
+          <LoginForm />
           <LoginAbout />
         </div>
       </div>

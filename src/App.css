@@ -62,3 +62,22 @@ body {
   justify-content: space-around;
   height: 70%;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 100px -100px 100px;
+}
+
+.navbar-logo {
+  display: flex;
+  width: 20%;
+}
+
+.navbar-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
+  align-self: center;
+}

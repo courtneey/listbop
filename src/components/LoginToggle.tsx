@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
-export default function LoginToggle() {
-  const [selection, setSelection] = useState("login");
-
-  function handleChange(
-    event: React.MouseEvent<HTMLElement>,
-    newSelection: string
-  ) {
-    setSelection(newSelection);
-  }
+export default function LoginToggle(props: {
+  selection: string;
+  handleChange: (newSelection: string) => void;
+}) {
+  const { selection, handleChange } = props;
 
   return (
     <ToggleButtonGroup
@@ -18,7 +14,9 @@ export default function LoginToggle() {
       color="primary"
       value={selection}
       exclusive
-      onChange={handleChange}
+      onChange={(event, newSelection) => {
+        if (newSelection) handleChange(newSelection);
+      }}
     >
       <ToggleButton value="login">Log In</ToggleButton>
       <ToggleButton value="signup">Sign Up</ToggleButton>

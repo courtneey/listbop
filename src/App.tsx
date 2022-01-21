@@ -1,9 +1,7 @@
 import React from "react";
 import "./App.css";
-import LoginAbout from "./components/LoginAbout";
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
 import LoginSignupPage from "./components/LoginSignupPage";
+import NewListPage from "./components/NewListPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -18,7 +16,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <LoginSignupPage />
+        {/* <LoginSignupPage /> */}
+        <NewListPage />
       </div>
     </ThemeProvider>
   );

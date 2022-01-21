@@ -50,3 +50,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.newlist-container {
+  display: flex;
+  margin: 150px;
+  justify-content: space-between;
+}

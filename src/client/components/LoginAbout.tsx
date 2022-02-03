@@ -7,7 +7,7 @@ export default function LoginAbout() {
       <p className="about-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </p>
-      <img src={require("../logo.png")} className="logo-login" alt="logo" />
+      <img src={require("../../logo.png")} className="logo-login" alt="logo" />
     </div>
   );
 }

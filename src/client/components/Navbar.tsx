@@ -5,9 +5,9 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar-logo">
-        <img src={require("../logo.png")} alt="logo" style={{ width: 80 }} />
+        <img src={require("../../logo.png")} alt="logo" style={{ width: 80 }} />
         <img
-          src={require("../text-logo.png")}
+          src={require("../../text-logo.png")}
           alt="logo"
           style={{
             width: "90px",

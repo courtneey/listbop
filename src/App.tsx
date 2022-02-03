@@ -16,8 +16,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <LoginSignupPage />
-        {/* <NewListPage /> */}
+        {/* <LoginSignupPage /> */}
+        <NewListPage />
       </div>
     </ThemeProvider>
   );

@@ -5,7 +5,7 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import { Card, CardContent } from "@mui/material";
 
-export default function LoginSignupPage() {
+export function LoginSignupPage() {
   const [selection, setSelection] = useState("login");
 
   return (

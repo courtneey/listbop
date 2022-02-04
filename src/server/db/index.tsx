@@ -1,12 +1,7 @@
-const db = require("./db");
+export const db = require("./db");
 
 const User = require("./models/User");
 
-module.exports = {
-  db,
-  models: {
-    User,
-  },
+export const models = {
+  User,
 };
-
-export {};

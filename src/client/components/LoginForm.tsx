@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, TextField, Box, Grid, Button } from "@mui/material";
+import { authenticate } from "../store/auth";
+import { connect } from "react-redux";
+import { AppDispatch } from "../store";
 
-export default function LoginForm() {
+interface LoginProps {
+  login: (method: string, email: string, password: string) => void;
+}
+
+function LoginForm(props: LoginProps) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = props;
+
   return (
     <div>
       <Typography
@@ -29,6 +40,8 @@ export default function LoginForm() {
               label="Email"
               variant="standard"
               sx={{ width: "100%" }}
+              onChange={(evt) => setEmail(evt.target.value)}
+              value={email}
             />
           </Grid>
           <Grid item xs={12}>
@@ -37,6 +50,8 @@ export default function LoginForm() {
               label="Password"
               variant="standard"
               sx={{ width: "100%" }}
+              onChange={(evt) => setPassword(evt.target.value)}
+              value={password}
             />
           </Grid>
         </Grid>
@@ -45,6 +60,9 @@ export default function LoginForm() {
         <Button
           variant="contained"
           sx={{ width: "90%", marginTop: 4, height: 50, borderRadius: 3 }}
+          onClick={() => {
+            login("login", email, password);
+          }}
         >
           Log In
         </Button>
@@ -52,3 +70,12 @@ export default function LoginForm() {
     </div>
   );
 }
+
+const mapDispatch = (dispatch: AppDispatch) => {
+  return {
+    login: (method: string, email: string, password: string) =>
+      dispatch(authenticate(method, email, password)),
+  };
+};
+
+export default connect(null, mapDispatch)(LoginForm);

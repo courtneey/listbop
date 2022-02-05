@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Typography, TextField, Box, Grid, Button } from "@mui/material";
 import { authenticate } from "../store/auth";
 import { connect } from "react-redux";
@@ -9,9 +9,6 @@ const SignupForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signup, auth } = props;
-  console.log("signup:", signup);
-  console.log("auth:", auth);
-  console.log("props:", props);
 
   return (
     <div>

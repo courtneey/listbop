@@ -49,6 +49,7 @@ function LoginForm(props: LoginProps) {
               id="password"
               label="Password"
               variant="standard"
+              type="password"
               sx={{ width: "100%" }}
               onChange={(evt) => setPassword(evt.target.value)}
               value={password}

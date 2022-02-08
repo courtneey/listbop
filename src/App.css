@@ -8,7 +8,7 @@ body {
 
 .logo-login {
   width: 300px;
-  margin-left: -100px;
+  margin-bottom: 10%;
 }
 
 .signup-container {
@@ -24,23 +24,25 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-left: 100px;
+}
+
+.about-title-container {
+  margin: auto;
+  width: 60%;
 }
 
 .about-title {
   font-size: 60px;
   font-family: "Raleway";
   font-weight: bold;
-  align-self: flex-start;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .about-text {
   font-size: 30px;
-  width: 500px;
   font-family: "Raleway";
   font-weight: bold;
-  align-self: flex-start;
   text-align: left;
 }
 
@@ -78,7 +80,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 30%;
+  width: 40%;
   align-self: center;
 }
 
@@ -89,4 +91,91 @@ body {
   justify-content: center;
   align-items: center;
   gap: 130px;
+}
+
+.login-card {
+  width: 450px;
+  height: 600px;
+  padding: 16px;
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .logo-login {
+    width: 270px;
+    margin-bottom: 10%;
+  }
+
+  .signup-form {
+    width: 60%;
+  }
+
+  .about-container {
+    width: 40%;
+  }
+
+  .about-title-container {
+    margin: auto;
+    width: 60%;
+  }
+
+  .about-title {
+    font-size: 54px;
+  }
+
+  .about-text {
+    font-size: 24px;
+  }
+
+  .login-card {
+    width: 400px;
+    height: 550px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .logo-login {
+    width: 240px;
+    margin-bottom: 10%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .signup-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+  }
+
+  .logo-login {
+    width: 240px;
+    margin-bottom: 10%;
+  }
+
+  .signup-form {
+    width: 100vw;
+  }
+
+  .about-container {
+    width: 100vw;
+  }
+
+  .about-title-container {
+    margin: auto;
+    width: 60%;
+  }
+
+  .about-title {
+    font-size: 54px;
+  }
+
+  .about-text {
+    font-size: 24px;
+  }
+
+  .login-card {
+    width: 100vw;
+    height: 80vh;
+  }
 }

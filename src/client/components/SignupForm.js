@@ -18,7 +18,7 @@ const SignupForm = (props) => {
           marginLeft: 3,
           textAlign: "left",
           fontFamily: "Roboto",
-          fontSize: 50,
+          fontSize: 40,
           fontWeight: "bold",
           color: "#3C3C3C",
         }}

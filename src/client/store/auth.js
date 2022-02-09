@@ -7,7 +7,10 @@ const TOKEN = "token";
 
 const SET_AUTH = "SET_AUTH";
 
-const setAuth = (auth) => ({ type: SET_AUTH, auth });
+const setAuth = (auth) => ({
+  type: SET_AUTH,
+  auth: { id: auth.id, firstName: auth.firstName, email: auth.email },
+});
 
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);

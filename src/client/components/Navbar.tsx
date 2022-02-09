@@ -1,7 +1,16 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Link } from "@mui/material";
+import { logout } from "../store";
+import { connect } from "react-redux";
+import { AppDispatch } from "../store";
 
-export default function Navbar() {
+interface NavbarProps {
+  logout: () => void;
+}
+
+function Navbar(props: NavbarProps) {
+  const { logout } = props;
+
   return (
     <div className="navbar">
       <div className="navbar-logo">
@@ -18,16 +27,52 @@ export default function Navbar() {
         />
       </div>
       <div className="navbar-links">
-        <Typography sx={{ fontFamily: "Roboto" }} color="primary.light">
+        <Link
+          sx={{ fontFamily: "Roboto" }}
+          underline="none"
+          component="button"
+          color="primary.light"
+        >
           My Lists
-        </Typography>
-        <Typography sx={{ fontFamily: "Roboto" }} color="primary.light">
+        </Link>
+        <Link
+          sx={{ fontFamily: "Roboto" }}
+          underline="none"
+          component="button"
+          color="primary.light"
+        >
           New List
-        </Typography>
-        <Typography sx={{ fontFamily: "Roboto" }} color="primary.light">
+        </Link>
+        <Link
+          sx={{ fontFamily: "Roboto" }}
+          underline="none"
+          component="button"
+          color="primary.light"
+        >
           Account
-        </Typography>
+        </Link>
+        <Link
+          sx={{ fontFamily: "Roboto" }}
+          color="primary.light"
+          underline="none"
+          component="button"
+          onClick={() => {
+            logout();
+          }}
+        >
+          Logout
+        </Link>
       </div>
     </div>
   );
 }
+
+const mapDispatch = (dispatch: AppDispatch) => {
+  return {
+    logout: () => {
+      dispatch(logout());
+    },
+  };
+};
+
+export default connect(null, mapDispatch)(Navbar);

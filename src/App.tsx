@@ -4,7 +4,7 @@ import { LoginSignupPage } from "./client/components/LoginSignupPage";
 import NewListPage from "./client/components/NewListPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { connect } from "react-redux";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { me } from "./client/store/auth";
 import { RootState, AppDispatch } from "./client/store";
 
@@ -19,27 +19,30 @@ const theme = createTheme({
 interface AppProps {
   loggedIn: boolean;
   loadInitialData: () => void;
+  auth: any;
 }
 
 function App(props: AppProps) {
-  const { loggedIn, loadInitialData } = props;
+  const { loggedIn, loadInitialData, auth } = props;
 
   useEffect(() => {
     loadInitialData();
-  });
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <BrowserRouter>
-          <Routes>
-            {loggedIn ? (
-              <Route path="/" element={<NewListPage />}></Route>
-            ) : (
-              <Route path="/" element={<LoginSignupPage />}></Route>
-            )}
-          </Routes>
-        </BrowserRouter>
+        <Router>
+          {loggedIn ? (
+            <Routes>
+              <Route path="/" element={<NewListPage />} />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route path="/" element={<LoginSignupPage />} />
+            </Routes>
+          )}
+        </Router>
       </div>
     </ThemeProvider>
   );
@@ -48,6 +51,7 @@ function App(props: AppProps) {
 const mapState = (state: RootState) => {
   return {
     loggedIn: !!state.auth.id,
+    auth: state.auth,
   };
 };
 

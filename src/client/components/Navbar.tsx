@@ -18,12 +18,7 @@ function Navbar(props: NavbarProps) {
         <img
           src={require("../../text-logo.png")}
           alt="logo"
-          style={{
-            width: "90px",
-            height: "30px",
-            alignSelf: "center",
-            marginLeft: 20,
-          }}
+          className="navbar-text-logo"
         />
       </div>
       <div className="navbar-links">

@@ -76,6 +76,13 @@ body {
   width: 20%;
 }
 
+.navbar-text-logo {
+  width: 90px;
+  height: 27px;
+  align-self: center;
+  margin-left: 15px;
+}
+
 .navbar-links {
   display: flex;
   flex-direction: row;
@@ -139,6 +146,20 @@ body {
     width: 240px;
     margin-bottom: 10%;
   }
+
+  .navbar {
+    margin: 20px 60px -100px 60px;
+  }
+
+  .navbar-links {
+    width: 60%;
+  }
+
+  .footer-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    gap: 50px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -177,5 +198,32 @@ body {
   .login-card {
     width: 100vw;
     height: 80vh;
+  }
+
+  .navbar {
+    margin: 20px 40px -100px 40px;
+    flex-direction: column;
+  }
+
+  .navbar-links {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .navbar-logo {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-left: 20%;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .navbar {
+    margin: 20px 40px -120px 40px;
+  }
+
+  .navbar-logo {
+    margin: auto;
   }
 }

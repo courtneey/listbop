@@ -5,13 +5,11 @@ export default function NewListEditForm() {
   return (
     <Card
       sx={{
-        width: 450,
-        height: 520,
         boxShadow:
           "0px 5px 15px rgba(0, 0, 0, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.1)",
         borderRadius: 2,
-        padding: 4,
       }}
+      className="newlist-edit-card"
     >
       <CardContent className="newlist-edit-container">
         <Typography
@@ -27,7 +25,8 @@ export default function NewListEditForm() {
       </CardContent>
       <Button
         variant="contained"
-        sx={{ width: "20%", marginTop: 4, height: 50, borderRadius: 3 }}
+        sx={{ marginTop: 4, height: 50, borderRadius: 3 }}
+        className="save-button"
       >
         Save
       </Button>

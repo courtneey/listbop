@@ -3,7 +3,7 @@ import { Typography, TextField, Button } from "@mui/material";
 
 export default function NewListPage() {
   return (
-    <div style={{ width: "30%", marginTop: 80 }}>
+    <div className="newlist-simple-container">
       <Typography
         sx={{
           fontFamily: "Roboto",
@@ -15,16 +15,20 @@ export default function NewListPage() {
       >
         Build your grocery list:
       </Typography>
-      <TextField
-        label="Enter an item name"
-        sx={{ marginTop: 4, width: "100%", textAlign: "center" }}
-      ></TextField>
-      <Button
-        variant="contained"
-        sx={{ width: "70%", marginTop: 4, height: 50, borderRadius: 3 }}
-      >
-        Add to List
-      </Button>
+      <div className="newlist-lower-section">
+        <TextField
+          label="Enter an item name"
+          sx={{ marginTop: 4, textAlign: "center" }}
+          className="newlist-item-field"
+        ></TextField>
+        <Button
+          variant="contained"
+          sx={{ marginTop: 4, borderRadius: 3 }}
+          className="add-to-list-button"
+        >
+          Add to List
+        </Button>
+      </div>
     </div>
   );
 }

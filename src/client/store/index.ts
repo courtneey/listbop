@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import logger from "redux-logger";
-import authReducer from "./auth";
+import {authReducer} from "./auth";
 import { configureStore } from "@reduxjs/toolkit";
 
 const reducer = combineReducers({ auth: authReducer });

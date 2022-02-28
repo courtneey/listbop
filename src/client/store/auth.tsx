@@ -1,3 +1,5 @@
+import { AppDispatch } from "./index";
+import { Reducer } from "redux";
 import axios from "axios";
 import { createBrowserHistory } from "history";
 
@@ -7,12 +9,19 @@ const TOKEN = "token";
 
 const SET_AUTH = "SET_AUTH";
 
-const setAuth = (auth) => ({
+interface Auth {
+  id?: number;
+  firstName?: string;
+  email?: string;
+  error?: any;
+}
+
+const setAuth = (auth: Auth) => ({
   type: SET_AUTH,
   auth: { id: auth.id, firstName: auth.firstName, email: auth.email },
 });
 
-export const me = () => async (dispatch) => {
+export const me = () => async (dispatch: AppDispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
     const res = await axios.get("/auth/me", {
@@ -25,7 +34,14 @@ export const me = () => async (dispatch) => {
 };
 
 export const authenticate =
-  (method, email, password, firstName, lastName) => async (dispatch) => {
+  (
+    method?: string,
+    email?: string,
+    password?: string,
+    firstName?: string,
+    lastName?: string
+  ) =>
+  async (dispatch: AppDispatch) => {
     try {
       let res;
       if (method === "signup") {
@@ -53,11 +69,17 @@ export const logout = () => {
   };
 };
 
-export default function authReducer(state = {}, action) {
+const initialState = {
+  id: null,
+  firstName: null,
+  email: null,
+};
+
+export const authReducer: Reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_AUTH:
       return action.auth;
     default:
       return state;
   }
-}
+};

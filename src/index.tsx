@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { Router } from "react-router-dom";
-import { history } from "./client/store/auth";
 import store from "./client/store";
 
 ReactDOM.render(

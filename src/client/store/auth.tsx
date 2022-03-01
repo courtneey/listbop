@@ -1,9 +1,6 @@
 import { AppDispatch } from "./index";
 import { Reducer } from "redux";
 import axios from "axios";
-import { createBrowserHistory } from "history";
-
-export const history = createBrowserHistory();
 
 const TOKEN = "token";
 

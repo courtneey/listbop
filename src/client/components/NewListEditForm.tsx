@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Typography, Card, CardContent, Button, Divider } from "@mui/material";
 
 interface Item {
@@ -7,18 +7,12 @@ interface Item {
   category: string;
 }
 
-export default function NewListEditForm() {
-  const [list, setList] = useState<Item[] | []>([
-    { id: 1, name: "Cookies", category: "Snacks" },
-    { id: 2, name: "Bread", category: "Bakery" },
-    { id: 3, name: "Milk", category: "Dairy" },
-  ]);
+interface Props {
+  list: Item[];
+}
 
-  const addToList = (item: Item) => {
-    const newList = list.slice();
-    newList.push(item);
-    setList(newList);
-  };
+export default function NewListEditForm(props: Props) {
+  const { list } = props;
 
   return (
     <Card

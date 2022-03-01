@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, TextField, Button } from "@mui/material";
 
-export default function NewListPage() {
+interface Item {
+  id: number;
+  name: string;
+  category: string;
+}
+
+interface Props {
+  addToList: (item: Item) => void;
+}
+
+export default function NewListPage(props: Props) {
+  const { addToList } = props;
+  const [itemName, setItemName] = useState("");
+  const [itemCategory, setItemCategory] = useState("");
+
   return (
     <div className="newlist-simple-container">
       <Typography
@@ -18,6 +32,8 @@ export default function NewListPage() {
       <div className="newlist-lower-section">
         <TextField
           label="Enter an item name"
+          value={itemName}
+          onChange={(e) => setItemName(e.target.value)}
           sx={{ marginTop: 4, textAlign: "center" }}
           className="newlist-item-field"
         ></TextField>
@@ -25,6 +41,7 @@ export default function NewListPage() {
           variant="contained"
           sx={{ marginTop: 4, borderRadius: 3 }}
           className="add-to-list-button"
+          onClick={() => addToList({ id: 4, name: itemName, category: "None" })}
         >
           Add to List
         </Button>

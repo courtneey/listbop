@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Typography, Card, CardContent, Button } from "@mui/material";
+import { Typography, Card, CardContent, Button, Divider } from "@mui/material";
 
 interface Item {
   id: number;
@@ -32,22 +32,56 @@ export default function NewListEditForm() {
       <CardContent className="newlist-edit-container">
         <div className="newlist-edit-item">
           <Typography
-            sx={{ fontFamily: "Roboto", fontSize: 30, color: "#949494" }}
+            sx={{
+              fontFamily: "Roboto",
+              fontSize: 30,
+              color: "#949494",
+              marginBottom: 2,
+            }}
           >
             Item
           </Typography>
           {list.map((item) => (
-            <Typography key={item.id}>{item.name}</Typography>
+            <div key={item.id} style={{ marginBottom: 10 }}>
+              <Typography
+                sx={{
+                  fontFamily: "Roboto",
+                  fontSize: 20,
+                  color: "#3C3C3C",
+                  marginBottom: 1,
+                }}
+              >
+                {item.name}
+              </Typography>
+              <Divider />
+            </div>
           ))}
         </div>
         <div className="newlist-edit-category">
           <Typography
-            sx={{ fontFamily: "Roboto", fontSize: 30, color: "#949494" }}
+            sx={{
+              fontFamily: "Roboto",
+              fontSize: 30,
+              color: "#949494",
+              marginBottom: 2,
+            }}
           >
             Category
           </Typography>
           {list.map((item) => (
-            <Typography key={item.id}>{item.category}</Typography>
+            <div key={item.id} style={{ marginBottom: 10 }}>
+              <Typography
+                sx={{
+                  fontFamily: "Roboto",
+                  fontSize: 20,
+                  color: "#3C3C3C",
+                  marginBottom: 1,
+                }}
+              >
+                {item.category}
+              </Typography>
+              <Divider />
+            </div>
           ))}
         </div>
       </CardContent>

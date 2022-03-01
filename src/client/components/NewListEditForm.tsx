@@ -10,6 +10,8 @@ interface Item {
 export default function NewListEditForm() {
   const [list, setList] = useState<Item[] | []>([
     { id: 1, name: "Cookies", category: "Snacks" },
+    { id: 2, name: "Bread", category: "Bakery" },
+    { id: 3, name: "Milk", category: "Dairy" },
   ]);
 
   const addToList = (item: Item) => {
@@ -28,25 +30,26 @@ export default function NewListEditForm() {
       className="newlist-edit-card"
     >
       <CardContent className="newlist-edit-container">
-        <div className="newlist-edit-title">
+        <div className="newlist-edit-item">
           <Typography
             sx={{ fontFamily: "Roboto", fontSize: 30, color: "#949494" }}
           >
             Item
           </Typography>
+          {list.map((item) => (
+            <Typography key={item.id}>{item.name}</Typography>
+          ))}
+        </div>
+        <div className="newlist-edit-category">
           <Typography
             sx={{ fontFamily: "Roboto", fontSize: 30, color: "#949494" }}
           >
             Category
           </Typography>
+          {list.map((item) => (
+            <Typography key={item.id}>{item.category}</Typography>
+          ))}
         </div>
-
-        {list.map((item: Item) => (
-          <div key={item.id} className="newlist-edit-title">
-            <Typography>{item.name}</Typography>
-            <Typography>{item.category}</Typography>
-          </div>
-        ))}
       </CardContent>
       <Button
         variant="contained"

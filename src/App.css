@@ -72,13 +72,19 @@ body {
 
 .newlist-edit-container {
   display: flex;
+  flex-direction: row;
+}
+
+.newlist-edit-item {
+  width: 50%;
+  display: flex;
   flex-direction: column;
 }
 
-.newlist-edit-title {
+.newlist-edit-category {
+  width: 50%;
   display: flex;
-  justify-content: space-around;
-  height: 70%;
+  flex-direction: column;
 }
 
 .navbar {

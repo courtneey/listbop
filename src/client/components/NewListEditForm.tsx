@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Card, CardContent, Button } from "@mui/material";
 
+interface Item {
+  id: number;
+  name: string;
+  category: string;
+}
+
 export default function NewListEditForm() {
+  const [list, setList] = useState<Item[] | []>([
+    { id: 1, name: "Cookies", category: "Snacks" },
+  ]);
+
+  const addToList = (item: Item) => {
+    const newList = list.slice();
+    newList.push(item);
+    setList(newList);
+  };
+
   return (
     <Card
       sx={{
@@ -12,16 +28,25 @@ export default function NewListEditForm() {
       className="newlist-edit-card"
     >
       <CardContent className="newlist-edit-container">
-        <Typography
-          sx={{ fontFamily: "Roboto", fontSize: 30, color: "#949494" }}
-        >
-          Item
-        </Typography>
-        <Typography
-          sx={{ fontFamily: "Roboto", fontSize: 30, color: "#949494" }}
-        >
-          Category
-        </Typography>
+        <div className="newlist-edit-title">
+          <Typography
+            sx={{ fontFamily: "Roboto", fontSize: 30, color: "#949494" }}
+          >
+            Item
+          </Typography>
+          <Typography
+            sx={{ fontFamily: "Roboto", fontSize: 30, color: "#949494" }}
+          >
+            Category
+          </Typography>
+        </div>
+
+        {list.map((item: Item) => (
+          <div key={item.id} className="newlist-edit-title">
+            <Typography>{item.name}</Typography>
+            <Typography>{item.category}</Typography>
+          </div>
+        ))}
       </CardContent>
       <Button
         variant="contained"

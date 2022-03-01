@@ -64,7 +64,18 @@ body {
   margin-top: 80px;
 }
 
+.newlist-edit-card {
+  width: 450px;
+  height: 520px;
+  padding: 32px;
+}
+
 .newlist-edit-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.newlist-edit-title {
   display: flex;
   justify-content: space-around;
   height: 70%;
@@ -111,12 +122,6 @@ body {
   padding: 16px;
   padding-top: 24px;
   padding-bottom: 40px;
-}
-
-.newlist-edit-card {
-  width: 450px;
-  height: 520px;
-  padding: 32px;
 }
 
 .add-to-list-button {

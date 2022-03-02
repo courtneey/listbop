@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Typography, TextField, Button } from "@mui/material";
 
 interface Item {
-  id: number;
+  id: number | string;
   name: string;
   category: string;
 }

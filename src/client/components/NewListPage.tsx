@@ -7,7 +7,7 @@ import axios from "axios";
 import { API_BASE_URL } from "../../secret";
 
 interface Item {
-  id: number;
+  id: number | string;
   name: string;
   category: string;
 }
@@ -18,12 +18,12 @@ interface Props {
 
 export default function NewListPage(props: Props) {
   const [list, setList] = useState<Item[] | []>([
-    { id: 1, name: "Cookies", category: "Snacks" },
-    { id: 2, name: "Bread", category: "Bakery" },
-    { id: 3, name: "Milk", category: "Dairy" },
+    { id: 1, name: "Bread", category: "Bakery" },
+    { id: 2, name: "Milk", category: "Dairy" },
   ]);
   const [currentItemName, setCurrentItemName] = useState("");
   const [currentCategory, setCurrentCategory] = useState("");
+  const [currentId, setCurrentId] = useState("");
   const { krogerToken: token } = props;
 
   const fetchCategory = async (name: string) => {
@@ -39,8 +39,10 @@ export default function NewListPage(props: Props) {
     });
     const productInfo = data.data[0];
     const category = productInfo.categories[0];
+    const { productId } = productInfo;
 
     setCurrentCategory(category);
+    setCurrentId(productId);
   };
 
   const addToList = (item: Item) => {
@@ -51,7 +53,7 @@ export default function NewListPage(props: Props) {
   useEffect(() => {
     if (currentItemName.length && currentCategory.length) {
       const newItem: Item = {
-        id: 5,
+        id: currentId,
         name: currentItemName,
         category: currentCategory,
       };

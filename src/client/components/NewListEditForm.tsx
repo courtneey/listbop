@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Card, CardContent, Button, Divider } from "@mui/material";
 
 interface Item {
-  id: number;
+  id: number | string;
   name: string;
   category: string;
 }

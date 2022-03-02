@@ -41,7 +41,10 @@ export default function NewListPage(props: Props) {
           variant="contained"
           sx={{ marginTop: 4, borderRadius: 3 }}
           className="add-to-list-button"
-          onClick={() => addToList({ id: 4, name: itemName, category: "None" })}
+          onClick={() => {
+            addToList({ id: 4, name: itemName, category: "None" });
+            setItemName("");
+          }}
         >
           Add to List
         </Button>

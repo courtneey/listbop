@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NewListSimpleForm from "./NewListSimpleForm";
 import NewListEditForm from "./NewListEditForm";
 import Navbar from "./Navbar";
@@ -22,6 +22,8 @@ export default function NewListPage(props: Props) {
     { id: 2, name: "Bread", category: "Bakery" },
     { id: 3, name: "Milk", category: "Dairy" },
   ]);
+  const [currentItemName, setCurrentItemName] = useState("");
+  const [currentCategory, setCurrentCategory] = useState("");
   const { krogerToken: token } = props;
 
   const fetchCategory = async (name: string) => {
@@ -37,15 +39,28 @@ export default function NewListPage(props: Props) {
     });
     const productInfo = data.data[0];
     const category = productInfo.categories[0];
+
+    setCurrentCategory(category);
   };
 
   const addToList = (item: Item) => {
+    setCurrentItemName(item.name);
     fetchCategory(item.name);
-
-    const newList = list.slice();
-    newList.push(item);
-    setList(newList);
   };
+
+  useEffect(() => {
+    if (currentItemName.length && currentCategory.length) {
+      const newItem: Item = {
+        id: 5,
+        name: currentItemName,
+        category: currentCategory,
+      };
+
+      const newList = list.slice();
+      newList.push(newItem);
+      setList(newList);
+    }
+  }, [currentCategory]);
 
   return (
     <div>

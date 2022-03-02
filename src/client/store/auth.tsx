@@ -44,6 +44,7 @@ export const me = () => async (dispatch: AppDispatch) => {
 
     const urlencoded = new URLSearchParams();
     urlencoded.append("grant_type", "client_credentials");
+    urlencoded.append("scope", "product.compact");
 
     const requestOptions = {
       method: "POST",

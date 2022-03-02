@@ -35,7 +35,10 @@ function App(props: AppProps) {
         <Router>
           {loggedIn ? (
             <Routes>
-              <Route path="/" element={<NewListPage />} />
+              <Route
+                path="/"
+                element={<NewListPage krogerToken={auth.krogerToken} />}
+              />
             </Routes>
           ) : (
             <Routes>

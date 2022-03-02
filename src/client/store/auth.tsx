@@ -20,7 +20,7 @@ const setAuth = (auth: Auth, krogerToken?: string) => ({
     id: auth.id,
     firstName: auth.firstName,
     email: auth.email,
-    token: krogerToken,
+    krogerToken,
   },
 });
 

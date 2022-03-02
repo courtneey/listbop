@@ -1,9 +1,10 @@
 import { AppDispatch } from "./index";
 import { Reducer } from "redux";
 import axios from "axios";
+import { API_ID, API_KEY, OAUTH2_BASE_URL } from "../../secret";
+import { Buffer } from "buffer";
 
 const TOKEN = "token";
-
 const SET_AUTH = "SET_AUTH";
 
 interface Auth {
@@ -13,9 +14,14 @@ interface Auth {
   error?: any;
 }
 
-const setAuth = (auth: Auth) => ({
+const setAuth = (auth: Auth, krogerToken?: string) => ({
   type: SET_AUTH,
-  auth: { id: auth.id, firstName: auth.firstName, email: auth.email },
+  auth: {
+    id: auth.id,
+    firstName: auth.firstName,
+    email: auth.email,
+    token: krogerToken,
+  },
 });
 
 export const me = () => async (dispatch: AppDispatch) => {
@@ -26,7 +32,37 @@ export const me = () => async (dispatch: AppDispatch) => {
         authorization: token,
       },
     });
-    return dispatch(setAuth(res.data));
+
+    const encoded = Buffer.from(`${API_ID}:${API_KEY}`);
+    const authorization = `Basic ${encoded.toString("base64")}`;
+
+    let krogerToken = "";
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    myHeaders.append("Authorization", `${authorization}`);
+
+    const urlencoded = new URLSearchParams();
+    urlencoded.append("grant_type", "client_credentials");
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: "follow",
+    };
+
+    await fetch(`${OAUTH2_BASE_URL}/token`, requestOptions as any)
+      .then((response) => response.text())
+      .then((result) => {
+        const { access_token } = JSON.parse(result);
+        krogerToken = access_token;
+      })
+      .catch((err) =>
+        console.log("There was an issue fetching the token:", err)
+      );
+
+    return dispatch(setAuth(res.data, krogerToken));
   }
 };
 

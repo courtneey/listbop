@@ -34,37 +34,41 @@ export const me = () => async (dispatch: AppDispatch) => {
       },
     });
 
-    const encoded = Buffer.from(`${API_ID}:${API_KEY}`);
-    const authorization = `Basic ${encoded.toString("base64")}`;
+    if (res.data) {
+      const encoded = Buffer.from(`${API_ID}:${API_KEY}`);
+      const authorization = `Basic ${encoded.toString("base64")}`;
 
-    let krogerToken = "";
+      let krogerToken = "";
 
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-    myHeaders.append("Authorization", `${authorization}`);
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+      myHeaders.append("Authorization", `${authorization}`);
 
-    const urlencoded = new URLSearchParams();
-    urlencoded.append("grant_type", "client_credentials");
-    urlencoded.append("scope", "product.compact");
+      const urlencoded = new URLSearchParams();
+      urlencoded.append("grant_type", "client_credentials");
+      urlencoded.append("scope", "product.compact");
 
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: urlencoded,
-      redirect: "follow",
-    };
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: "follow",
+      };
 
-    await fetch(`${OAUTH2_BASE_URL}/token`, requestOptions as any)
-      .then((response) => response.text())
-      .then((result) => {
-        const { access_token } = JSON.parse(result);
-        krogerToken = access_token;
-      })
-      .catch((err) =>
-        console.log("There was an issue fetching the token:", err)
-      );
+      await fetch(`${OAUTH2_BASE_URL}/token`, requestOptions as any)
+        .then((response) => response.text())
+        .then((result) => {
+          const { access_token } = JSON.parse(result);
+          krogerToken = access_token;
+        })
+        .catch((err) =>
+          console.log("There was an issue fetching the token:", err)
+        );
 
-    return dispatch(setAuth(res.data, krogerToken));
+      window.localStorage.setItem("krogerToken", krogerToken);
+
+      return dispatch(setAuth(res.data, krogerToken));
+    }
   }
 };
 
@@ -98,6 +102,7 @@ export const authenticate =
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
+  window.localStorage.removeItem("krogerToken");
   return {
     type: SET_AUTH,
     auth: {},

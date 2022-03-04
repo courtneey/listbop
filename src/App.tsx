@@ -25,6 +25,8 @@ interface AppProps {
 function App(props: AppProps) {
   const { loggedIn, loadInitialData, auth } = props;
 
+  console.log("auth:", auth);
+
   useEffect(() => {
     loadInitialData();
   }, []);
@@ -53,7 +55,7 @@ function App(props: AppProps) {
 
 const mapState = (state: RootState) => {
   return {
-    loggedIn: !!state.auth.id,
+    loggedIn: !!window.localStorage.getItem("token"),
     auth: state.auth,
   };
 };

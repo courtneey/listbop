@@ -11,6 +11,7 @@ interface Auth {
   id?: number;
   firstName?: string;
   email?: string;
+  krogerToken?: string;
   error?: any;
 }
 
@@ -107,6 +108,7 @@ const initialState = {
   id: null,
   firstName: null,
   email: null,
+  krogerToken: null,
 };
 
 export const authReducer: Reducer = (state = initialState, action) => {

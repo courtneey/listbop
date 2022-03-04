@@ -79,13 +79,15 @@ export default function NewListEditForm(props: Props) {
           ))}
         </div>
       </CardContent>
-      <Button
-        variant="contained"
-        sx={{ marginTop: 4, height: 50, borderRadius: 3 }}
-        className="save-button"
-      >
-        Save
-      </Button>
+      <div>
+        <Button
+          variant="contained"
+          sx={{ marginTop: 4, height: 50, borderRadius: 3 }}
+          className="save-button"
+        >
+          Save
+        </Button>
+      </div>
     </Card>
   );
 }

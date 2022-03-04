@@ -46,8 +46,11 @@ export default function NewListPage(props: Props) {
   };
 
   const addToList = (item: Item) => {
-    setCurrentItemName(item.name);
-    fetchCategory(item.name);
+    const { name } = item;
+    const titleName = `${name[0].toUpperCase()}${name.slice(1).toLowerCase()}`;
+
+    setCurrentItemName(titleName);
+    fetchCategory(name);
   };
 
   useEffect(() => {

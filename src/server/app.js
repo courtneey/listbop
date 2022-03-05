@@ -9,7 +9,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use("/auth", require("./auth"));
-//app.use("/api", require("./api"));
+app.use("/api", require("./api"));
 
 app.use((err, req, res, next) => {
   console.error(err);

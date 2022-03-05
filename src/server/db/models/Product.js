@@ -13,6 +13,7 @@ const Product = db.define("product", {
   productId: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true,
   },
 });
 

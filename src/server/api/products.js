@@ -8,9 +8,10 @@ const axios = require("axios");
 const { API_BASE_URL } = require("../../secret");
 
 router.get("/:name", async (req, res, next) => {
-  const titleName = `${req.params.name[0].toUpperCase()}${req.params.name
-    .slice(1)
-    .toLowerCase()}`;
+  const titleName = req.params.name
+    .split(" ")
+    .map((text) => `${text[0].toUpperCase()}${text.slice(1).toLowerCase()}`)
+    .join(" ");
   try {
     const product = await Product.findOne({
       where: {

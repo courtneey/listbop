@@ -32,15 +32,13 @@ export default function NewListPage(props: Props) {
       },
     });
 
+    setCurrentItemName(data.name);
     setCurrentCategory(data.category);
     setCurrentId(data.productId);
   };
 
   const addToList = (item: Item) => {
     const { name } = item;
-    const titleName = `${name[0].toUpperCase()}${name.slice(1).toLowerCase()}`;
-
-    setCurrentItemName(titleName);
     fetchCategory(name);
   };
 

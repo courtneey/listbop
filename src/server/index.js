@@ -4,7 +4,7 @@ const db = require("./db/db");
 
 const init = async () => {
   try {
-    await db.sync();
+    await db.sync({ alter: true });
     app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
   } catch (err) {
     console.log(`There was an issue at port ${PORT}`, err);

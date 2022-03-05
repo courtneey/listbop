@@ -42,10 +42,8 @@ router.get("/:name", async (req, res, next) => {
       const { productId } = productInfo;
 
       // create a new entry in db
-      const newProductEntry = await Product.create({
-        name: titleName,
-        category: productCategory,
-        productId,
+      const [newProductEntry, created] = await Product.findOrCreate({
+        where: { name: titleName, category: productCategory, productId },
       });
 
       // send new product entry

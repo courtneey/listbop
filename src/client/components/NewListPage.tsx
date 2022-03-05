@@ -4,7 +4,6 @@ import NewListEditForm from "./NewListEditForm";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
-import { API_BASE_URL } from "../../secret";
 
 interface Item {
   id: number | string;
@@ -24,25 +23,17 @@ export default function NewListPage(props: Props) {
   const [currentItemName, setCurrentItemName] = useState("");
   const [currentCategory, setCurrentCategory] = useState("");
   const [currentId, setCurrentId] = useState("");
-  const { krogerToken: token } = props;
+  const { krogerToken } = props;
 
-  const fetchCategory = async (name: string) => {
-    const { data } = await axios.get(`${API_BASE_URL}/v1/products`, {
-      params: {
-        "filter.term": `${name.toLowerCase()}`,
-        "filter.limit": 1,
-      },
+  const fetchCategory = async (itemName: string) => {
+    const { data } = await axios.get(`/api/products/${itemName}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
-        "Cache-Control": "no-cache",
+        authorization: krogerToken,
       },
     });
-    const productInfo = data.data[0];
-    const category = productInfo.categories[0];
-    const { productId } = productInfo;
 
-    setCurrentCategory(category);
-    setCurrentId(productId);
+    setCurrentCategory(data.category);
+    setCurrentId(data.productId);
   };
 
   const addToList = (item: Item) => {

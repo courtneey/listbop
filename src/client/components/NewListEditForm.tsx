@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Card, CardContent, Button, Divider } from "@mui/material";
+import axios from "axios";
 
 interface Item {
   id: number | string;
@@ -13,6 +14,16 @@ interface Props {
 
 export default function NewListEditForm(props: Props) {
   const { list } = props;
+
+  const postList = async (userId: number | string) => {
+    try {
+      await axios.post("/api/lists/", {
+        userId,
+      });
+    } catch (err) {
+      console.log("There was an issue with posting a new list:", err);
+    }
+  };
 
   return (
     <Card
@@ -84,6 +95,7 @@ export default function NewListEditForm(props: Props) {
           variant="contained"
           sx={{ marginTop: 4, height: 50, borderRadius: 3 }}
           className="save-button"
+          onClick={() => postList(1)}
         >
           Save
         </Button>

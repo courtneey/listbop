@@ -17,8 +17,8 @@ interface Props {
 
 export default function NewListPage(props: Props) {
   const [list, setList] = useState<Item[] | []>([
-    { id: 1, name: "Bread", category: "Bakery" },
-    { id: 2, name: "Milk", category: "Dairy" },
+    { id: 1111, name: "Bread", category: "Bakery" },
+    { id: 1112, name: "Milk", category: "Dairy" },
   ]);
   const [currentItemName, setCurrentItemName] = useState("");
   const [currentCategory, setCurrentCategory] = useState("");
@@ -34,7 +34,7 @@ export default function NewListPage(props: Props) {
 
     setCurrentItemName(data.name);
     setCurrentCategory(data.category);
-    setCurrentId(data.productId);
+    setCurrentId(data.id);
   };
 
   const addToList = (item: Item) => {

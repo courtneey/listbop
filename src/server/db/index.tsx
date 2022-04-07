@@ -7,6 +7,9 @@ const List = require("./models/List");
 User.hasMany(List);
 List.belongsTo(User);
 
+List.hasMany(Product);
+Product.belongsToMany(List, { through: "list_products" });
+
 export const models = {
   User,
   Product,

@@ -50,7 +50,7 @@ export default function NewListPage(props: Props) {
       newList.push(newItem);
       setList(newList);
     }
-  }, [currentCategory, currentId]);
+  }, [currentId]);
 
   return (
     <div>

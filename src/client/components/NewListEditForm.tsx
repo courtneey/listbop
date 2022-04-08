@@ -19,6 +19,7 @@ export default function NewListEditForm(props: Props) {
     try {
       await axios.post("/api/lists/", {
         userId,
+        products: list,
       });
     } catch (err) {
       console.log("There was an issue with posting a new list:", err);

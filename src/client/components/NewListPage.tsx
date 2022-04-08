@@ -16,13 +16,10 @@ interface Props {
 }
 
 export default function NewListPage(props: Props) {
-  const [list, setList] = useState<Item[] | []>([
-    { id: 1111, name: "Bread", category: "Bakery" },
-    { id: 1112, name: "Milk", category: "Dairy" },
-  ]);
+  const [list, setList] = useState<Item[] | []>([]);
   const [currentItemName, setCurrentItemName] = useState("");
   const [currentCategory, setCurrentCategory] = useState("");
-  const [currentId, setCurrentId] = useState("");
+  const [currentId, setCurrentId] = useState<number | null>(null);
   const { krogerToken } = props;
 
   const fetchCategory = async (itemName: string) => {
@@ -31,7 +28,6 @@ export default function NewListPage(props: Props) {
         authorization: krogerToken,
       },
     });
-
     setCurrentItemName(data.name);
     setCurrentCategory(data.category);
     setCurrentId(data.id);
@@ -43,7 +39,7 @@ export default function NewListPage(props: Props) {
   };
 
   useEffect(() => {
-    if (currentItemName.length && currentCategory.length) {
+    if (currentItemName.length && currentCategory.length && currentId) {
       const newItem: Item = {
         id: currentId,
         name: currentItemName,
@@ -54,7 +50,7 @@ export default function NewListPage(props: Props) {
       newList.push(newItem);
       setList(newList);
     }
-  }, [currentCategory]);
+  }, [currentCategory, currentId]);
 
   return (
     <div>
